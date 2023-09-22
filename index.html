@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gallery</title>
+    <style>
+      #container {
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+      header {
+        width: 100%;
+        height: fit-content;
+        background-color: rgb(27, 27, 27);
+        padding: 3px;
+        text-align: center;
+        font-size: 13px;
+        color: white;
+        margin-bottom: 50px;
+      }
+
+      main {
+        padding: 0 20px;
+      }
+      .content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 3rem;
+      }
+      .content-box {
+        width: 100%;
+        height: 300px;
+        padding: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+      .content-img {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+      }
+      .content-img img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.5s linear;
+      }
+      .content-img:hover img {
+        transform: scale(110%);
+      }
+      .content-text {
+        position: absolute;
+        bottom: -50px;
+        width: calc(100% - 10px);
+      }
+
+      .content-text span {
+        display: inline-block;
+        font-size: 15px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+        cursor: default;
+      }
+
+      .selectContent {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .selectContent-box {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .selectContent-title {
+        margin-top: 15px;
+        color: white;
+        font-size: 20px;
+      }
+      .selectContent-img {
+        position: relative;
+      }
+      .selectContent-img img {
+        padding: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+      .selectContent-img button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: 0;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      @keyframes mouseover {
+        100% {
+          bottom: 5px;
+        }
+      }
+
+      @keyframes mouseleave {
+        0% {
+          bottom: 5px;
+        }
+        100% {
+          bottom: -50px;
+        }
+      }
+
+      @media screen and (max-width: 1200px) {
+        .content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media screen and (max-width: 540px) {
+        .content {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        .selectContent-box {
+          transform: scale(80%);
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div class="title">
+          <h1>우주 갤러리</h1>
+        </div>
+      </header>
+      <main>
+        <div class="content">
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 1</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 2</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dW5pdmVyc2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 3</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dW5pdmVyc2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 4</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1501862700950-18382cd41497?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 5</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1537420327992-d6e192287183?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 6</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1627556592933-ffe99c1cd9eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 7</span>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <img
+                src="https://images.unsplash.com/photo-1590907047706-ee9c08cf3189?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div class="content-text">
+              <span>우주 8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="selectContent hidden">
+          <div class="selectContent-box">
+            <div class="selectContent-img">
+              <img
+                src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHVuaXZlcnNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              />
+              <button>X</button>
+            </div>
+            <div class="selectContent-title">
+              <span>Title</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script>
+    const contentBoxs = document.querySelectorAll(".content-box");
+    const selectContent = document.querySelector(".selectContent ");
+    const selectContentText = document.querySelector(
+      ".selectContent-title span"
+    );
+    const closeBtn = document.querySelector(".selectContent button");
+
+    const handleMouseOverBox = (event) => {
+      const contentBox = event.currentTarget;
+      const contentText = contentBox.querySelector(".content-text");
+      contentText.style.animation = "mouseover .5s linear forwards";
+    };
+
+    const handleMouseLeaveBox = (event) => {
+      const contentBox = event.currentTarget;
+      const contentText = contentBox.querySelector(".content-text");
+      contentText.style.animation = "mouseleave .5s linear";
+    };
+
+    const handleClickBox = (event) => {
+      if (event.target.tagName === "IMG") {
+        selectContent.classList.remove("hidden");
+        const img = selectContent.querySelector("img");
+        const span = event.currentTarget
+          .closest(".content-box")
+          .querySelector("span");
+        img.src = event.target.currentSrc;
+        selectContentText.innerText = span.innerText;
+        console.dir(event.target);
+      }
+    };
+
+    const handleCloseBox = () => {
+      selectContent.classList.add("hidden");
+    };
+    for (let contentBox of contentBoxs) {
+      contentBox.addEventListener("mouseover", handleMouseOverBox);
+      contentBox.addEventListener("mouseleave", handleMouseLeaveBox);
+      contentBox.addEventListener("click", handleClickBox);
+    }
+
+    closeBtn.addEventListener("click", handleCloseBox);
+  </script>
+</html>
